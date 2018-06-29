@@ -18,7 +18,7 @@ import java.util.Map;
 public class DemoAction {
     @GPAutowried
     private IDemoService demoService;
-    //我只是一个普通的方法
+    //我只是一个普通的方法 3
     private String normarlFiel;
 
     @GPRequestMapping(value = "/add*.json")
