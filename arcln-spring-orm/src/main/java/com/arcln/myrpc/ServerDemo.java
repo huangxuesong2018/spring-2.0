@@ -1,10 +1,15 @@
 package com.arcln.myrpc;
 
+import com.arcln.myrpc.zk.IRegisterCenter;
+import com.arcln.myrpc.zk.RegisterCenterImpl;
+
 public class ServerDemo {
     public static void main(String[] args) {
-        RpcServer server = new RpcServer();
         IGpHello hello = new GpHelloImpl();
-        server.publisher(hello,8080);
+        IRegisterCenter registerCenter = new RegisterCenterImpl();
+        RpcServer rpcServer = new RpcServer(registerCenter,"127.0.0.1:8080");
+        rpcServer.bind(hello);
+        rpcServer.publisher();
         System.out.println("服务发布....");
     }
 }

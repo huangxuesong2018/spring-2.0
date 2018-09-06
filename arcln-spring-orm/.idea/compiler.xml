@@ -10,8 +10,8 @@
         <module name="arcln-spring-orm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7">
-      <module name="arcln-spring-orm" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="arcln-spring-orm" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

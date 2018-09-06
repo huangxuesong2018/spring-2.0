@@ -6,13 +6,15 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.util.Map;
 
 public class ProcessorHandler implements Runnable {
-    private Object service;
+   // private Object service;
     private Socket socket;
+    private Map<String,Object> handerMap;
 
-    public ProcessorHandler(Object service, Socket socket) {
-        this.service = service;
+    public ProcessorHandler(Map<String,Object> handerMap, Socket socket) {
+        this.handerMap = handerMap;
         this.socket = socket;
     }
 
@@ -58,6 +60,7 @@ public class ProcessorHandler implements Runnable {
         for(int i = 0; i < args.length ; i ++){
             parameterTypes[i] = args[i].getClass();
         }
+        Object service = handerMap.get(request.getClassName());
         String methodName = request.getMethodName();
         Method method = service.getClass().getMethod(methodName,parameterTypes);
         return method.invoke(service,args);
