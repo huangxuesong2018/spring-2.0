@@ -6,19 +6,18 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class TCPTransport {
-    private String host;
-    private int port;
+    private String serviceAddress;
 
-    public TCPTransport(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public TCPTransport(String serviceAddress) {
+        this.serviceAddress = serviceAddress;
     }
 
     private Socket newSocket(){
         Socket client = null;
         try {
             System.out.println("开始建立socket 连接.......");
-            client = new Socket(host, port);
+            String[] arrs = serviceAddress.split(":");
+            client = new Socket(arrs[0], Integer.parseInt(arrs[1]));
         } catch (IOException e) {
             throw new RuntimeException("socket 连接建立失败");
         }

@@ -6,14 +6,12 @@ public class RpcRequest implements Serializable {
     private static final long serialVersionUID = -6758012981950762073L;
     private String methodName;
     private Object[] parameterTypes;
-
-    public RpcRequest() {
-        this.methodName = methodName;
-        this.parameterTypes = parameterTypes;
-    }
+    private String className;
+    public RpcRequest(){}
     public RpcRequest(String className, String methodName, Object[] parameterTypes) {
         this.methodName = methodName;
         this.parameterTypes = parameterTypes;
+        this.className = className;
     }
 
     public String getMethodName() {
@@ -30,5 +28,13 @@ public class RpcRequest implements Serializable {
 
     public void setParameterTypes(Object[] parameterTypes) {
         this.parameterTypes = parameterTypes;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }
